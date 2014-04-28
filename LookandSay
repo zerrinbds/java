@@ -1,0 +1,35 @@
+import java.util.Scanner;
+public class LookSay {
+public static void main(String[] args){
+	String num;
+	int sequence;
+	Scanner input= new Scanner(System.in);
+	System.out.println("Please enter a digit:");
+	num=input.next();
+	System.out.println("Please enter sequence number");
+	sequence=input.nextInt();
+ 
+	for (int i=1;i<=sequence;i++) {
+		System.out.println(num);
+		num = lookandsay(num);    
+	}
+}
+public static String lookandsay(String number){
+	StringBuilder result= new StringBuilder();
+ 
+	char repeat= number.charAt(0);
+	number= number.substring(1) + " "; 
+	int times= 1;
+ 
+	for(char real: number.toCharArray()){
+		if(real != repeat){
+			result.append(times + "" + repeat); 
+			times= 1;
+			repeat= real;
+		}else{
+			times+= 1;
+		}
+	}
+	return result.toString();
+}
+}
